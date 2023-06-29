@@ -20,26 +20,22 @@ try:
 except FileNotFoundError:
     sys.exit("Error: there was a problem running the `flatpak` binary, maybe it's not installed.")
 
+def flatpak_list_to_dict(data: str):
+    """Parse the flatpak list of apps and turn it into a dict"""
+    app: dict[str, str] = {}
+    for line in data.splitlines():
+        line = line.strip()
+        fields = line.split('\t')
+        # name = fields[0]
+        app_id = fields[1]
+        version: str = fields[2]
+        app[app_id] = version
+    return app
 
 # parse the list of apps that can be updated
-updates: dict[str, str] = {}
-for line in flatpak_updates.splitlines():
-    line = line.strip()
-    fields = line.split('\t')
-    # name = fields[0]
-    app_id = fields[1]
-    version: str = fields[2]
-    updates[app_id] = version
-
+updates = flatpak_list_to_dict(flatpak_updates)
 # parse the list of installed apps
-app_list: dict[str, str] = {}
-for line in flatpak_app_list.splitlines():
-    line = line.strip()
-    fields = line.split('\t')
-    # name = fields[0]
-    app_id = fields[1]
-    version: str = fields[2]
-    app_list[app_id] = version
+app_list = flatpak_list_to_dict(flatpak_app_list)
 
 to_update = []
 for app in updates.keys():
