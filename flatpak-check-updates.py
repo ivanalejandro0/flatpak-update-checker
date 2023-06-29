@@ -67,4 +67,8 @@ if len(to_update) == 0:
     sys.exit(0)
 
 for app in to_update:
-    print(f"{app['app_id']}: {app['installed']} -> {app['upstream']} [{app['update_type']}]")
+    versions = ""
+    if app['update_type'] != "unknown":
+        versions = f"{app['installed']} -> {app['upstream']} "
+    print(f"{app['app_id']}: {versions}[{app['update_type']}]")
+

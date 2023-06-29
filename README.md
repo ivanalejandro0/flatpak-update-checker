@@ -13,9 +13,9 @@ to get the information. It doesn't have any other external dependency.
 $ ./flatpak-check-updates.py
 com.github.xournalpp.xournalpp: 1.1.3 -> 1.1.3 [rebuild]
 org.freedesktop.Platform.GL.default: 23.1.1 -> 21.3.9 [update]
-org.freedesktop.Platform.VAAPI.Intel:  ->  [unknown]
+org.freedesktop.Platform.VAAPI.Intel: [unknown]
 org.freedesktop.Platform: 22.08.12.1 -> 21.08.18 [update]
-org.gnome.Platform:  ->  [unknown]
+org.gnome.Platform: [unknown]
 ```
 
 Each app is "tagged" with a word,
