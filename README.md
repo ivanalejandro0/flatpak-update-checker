@@ -28,6 +28,16 @@ the app.
 means, possibly that they are not versioned with a number as other apps.
 
 
+# How does this work?
+Where does the information come from?
+
+This app/script basically gets the information from two Flatpak commands:
+* `flatpak remote-ls --updates`: to list what has an update available
+* `flatpak list`: to list the installed apps
+
+From those two lists, I can show what's the current and new version for each
+and what's a rebuild instead of a new version.
+
 # Note
 At the time of writing this, there was not an official way of easily doing
 this.
