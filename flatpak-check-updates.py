@@ -43,23 +43,23 @@ for line in flatpak_app_list.splitlines():
 
 to_update = []
 for app in updates.keys():
-    kind = "update"
+    update_type = "update"
     if not app_list[app] or not updates[app]:
         # some apps appear listed with no version,
         # I don't know what that means
-        kind = "unknown"
+        update_type = "unknown"
     elif app_list[app] == updates[app]:
         # flatpak says that there's an update available but the version is
         # the same as the locally installed one. This means that there was a
         # change on the flatpak itself and the app was rebuilt, there's not a
         # new version/release of the app.
-        kind = "rebuild"
+        update_type = "rebuild"
 
     to_update.append({
         'app_id': app,
         'installed': app_list[app],
         'upstream': updates[app],
-        'update_type': kind,
+        'update_type': update_type,
     })
 
 if len(to_update) == 0:
