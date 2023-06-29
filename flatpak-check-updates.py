@@ -62,5 +62,9 @@ for app in updates.keys():
         'update_type': kind,
     })
 
+if len(to_update) == 0:
+    print("Everything is up to date")
+    sys.exit(0)
+
 for app in to_update:
     print(f"{app['app_id']}: {app['installed']} -> {app['upstream']} [{app['update_type']}]")
