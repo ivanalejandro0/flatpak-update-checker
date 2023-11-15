@@ -9,6 +9,10 @@ if sys.version_info < MIN_PYTHON:
     sys.exit("Error: Python %s.%s or later is required." % MIN_PYTHON)
 
 try:
+    # update remote metadata
+    result = subprocess.run(['flatpak', 'update', '--appstream'],
+                            stdout=subprocess.PIPE)
+
     # list available updates
     result = subprocess.run(['flatpak', 'remote-ls', '--updates'],
                             stdout=subprocess.PIPE)
